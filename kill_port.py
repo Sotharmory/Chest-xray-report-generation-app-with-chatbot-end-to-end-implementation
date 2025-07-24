@@ -4,10 +4,10 @@ import signal
 
 def kill_port_linux(port):
     try:
-        # Find processes using the port
+      
         result = subprocess.check_output(f'lsof -i :{port}', shell=True).decode()
         lines = result.strip().split('\n')
-        for line in lines[1:]:  # skip header line
+        for line in lines[1:]:  
             parts = line.split()
             pid = int(parts[1])
             os.kill(pid, signal.SIGKILL)
